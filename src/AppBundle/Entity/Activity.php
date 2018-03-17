@@ -56,6 +56,13 @@ class Activity
     private $room;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="video_path", type="string", length=255, nullable=true)
+     */
+    private $videoPath;
+
+    /**
      * Get id
      *
      * @return int
@@ -183,5 +190,21 @@ class Activity
     public function getRoom()
     {
         return $this->room;
+    }
+
+    /**
+     * @return string
+     */
+    public function getVideoPath()
+    {
+        return $this->videoPath;
+    }
+
+    /**
+     * @param string $videoPath
+     */
+    public function setVideoPath($videoPath)
+    {
+        $this->videoPath = $videoPath;
     }
 }
