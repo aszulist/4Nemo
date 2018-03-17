@@ -20,5 +20,7 @@
 .idea
 
 /web/js/*
+!/web/js/.gitkeep
 /web/css/*
+!/web/css/.gitkeep
 /node_modules

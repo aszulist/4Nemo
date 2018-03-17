@@ -5,7 +5,7 @@
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}
             {% stylesheets
-                '../node_modules/bootstrap/dist/css/*'
+                '../node_modules/bootstrap/dist/css/bootstrap.css'
                 filter='cssrewrite' output='css/app.css' %}
                 <link rel="stylesheet" href="{{ asset_url }}" />
             {% endstylesheets %}
@@ -16,9 +16,9 @@
         {% block body %}{% endblock %}
         {% block javascripts %}
             {% javascripts
-                '../node_modules/jquery/dist/*'
-                '../node_modules/bootstrap/dist/js/*'
-                output='js/app.js' %}
+                '../node_modules/jquery/dist/jquery.min.js'
+                '../node_modules/bootstrap/dist/js/bootstrap.min.js'
+                '../app/Resources/js/*' %}
                 <script src="{{ asset_url }}"></script>
             {% endjavascripts %}
         {% endblock %}
