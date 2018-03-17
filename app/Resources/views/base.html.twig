@@ -6,6 +6,7 @@
     {% block stylesheets %}
         {% stylesheets
             '../node_modules/bootstrap/dist/css/bootstrap.css'
+            '../node_modules/bootstrap/dist/css/bootstrap-grid.css'
             filter='cssrewrite' output='css/app.css' %}
             <link rel="stylesheet" href="{{ asset_url }}"/>
         {% endstylesheets %}
