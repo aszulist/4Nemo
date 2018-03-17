@@ -4,7 +4,9 @@
         <meta charset="UTF-8" />
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}
-            {% stylesheets 'bundles/app/css/*' filter='cssrewrite' %}
+            {% stylesheets
+                '../node_modules/bootstrap/dist/css/*'
+                filter='cssrewrite' output='css/app.css' %}
                 <link rel="stylesheet" href="{{ asset_url }}" />
             {% endstylesheets %}
         {% endblock %}
@@ -13,7 +15,10 @@
     <body>
         {% block body %}{% endblock %}
         {% block javascripts %}
-            {% javascripts '@AppBundle/Resources/public/js/*' %}
+            {% javascripts
+                '../node_modules/bootstrap/dist/js/*'
+                '../node_modules/jquery/dist/js/*'
+                output='js/app.js' %}
                 <script src="{{ asset_url }}"></script>
             {% endjavascripts %}
         {% endblock %}

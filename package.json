@@ -1,0 +1,26 @@
+{
+  "name": "aqua-world",
+  "version": "1.0.0",
+  "description": "AquaWorld =========",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aszulist/4Nemo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aszulist/4Nemo/issues"
+  },
+  "homepage": "https://github.com/aszulist/4Nemo#readme",
+  "dependencies": {
+    "bootstrap": "^4.0.0",
+    "jquery": "^3.3.1"
+  }
+}
