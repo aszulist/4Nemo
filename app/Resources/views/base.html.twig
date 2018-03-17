@@ -1,26 +1,42 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}
-            {% stylesheets
-                '../node_modules/bootstrap/dist/css/bootstrap.css'
-                filter='cssrewrite' output='css/app.css' %}
-                <link rel="stylesheet" href="{{ asset_url }}" />
-            {% endstylesheets %}
-        {% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}
-            {% javascripts
-                '../node_modules/jquery/dist/jquery.min.js'
-                '../node_modules/bootstrap/dist/js/bootstrap.min.js'
-                '../app/Resources/js/*' %}
-                <script src="{{ asset_url }}"></script>
-            {% endjavascripts %}
-        {% endblock %}
-    </body>
+<head>
+    <meta charset="UTF-8"/>
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {% block stylesheets %}
+        {% stylesheets
+            '../node_modules/bootstrap/dist/css/bootstrap.css'
+            filter='cssrewrite' output='css/app.css' %}
+            <link rel="stylesheet" href="{{ asset_url }}"/>
+        {% endstylesheets %}
+    {% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+</head>
+<body>
+<div class="container" id="main-div">
+    {% block body %}{% endblock %}
+</div>
+<a href="#" class="btn btn-primary" onclick="reload.navigate('{{ path('room_index') }}')">KLIK</a>
+{% block javascripts %}
+    {% javascripts
+        '../node_modules/jquery/dist/jquery.min.js'
+        '../node_modules/bootstrap/dist/js/bootstrap.min.js'
+        '../app/Resources/js/*' %}
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+<script type="application/javascript">
+    let reload = {
+        navigate: (url, data) => {
+            $.ajax({
+                url: url,
+                data: data,
+                method: 'POST'
+            })
+                .done(response => $("#main-div").html(response))
+                .fail(response => console.error(response));
+        }
+    }
+</script>
+</body>
 </html>
