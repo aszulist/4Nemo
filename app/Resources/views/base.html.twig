@@ -16,8 +16,8 @@
         {% block body %}{% endblock %}
         {% block javascripts %}
             {% javascripts
+                '../node_modules/jquery/dist/*'
                 '../node_modules/bootstrap/dist/js/*'
-                '../node_modules/jquery/dist/js/*'
                 output='js/app.js' %}
                 <script src="{{ asset_url }}"></script>
             {% endjavascripts %}
