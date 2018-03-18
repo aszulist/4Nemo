@@ -9,7 +9,7 @@
     {% elseif activity.isLastActivity %}
         <button type="button" class="col-md-6 btn btn-dark w-50 btn-lg btn-ph-20"
                 onclick="reload.navigate('{{ path('room_index', {id: activity.room.nextRoom.id}) }}')">
-            Next room bitch:w
+            Next room
         </button>
     {% endif %}
 </div>
