@@ -16,7 +16,7 @@ class PuzzleController extends Controller
     }
 
     /**
-     * @Route("puzzle-unlock/{id}", name="puzzle")
+     * @Route("/puzzle-unlock", name="puzzle")
      */
     public function unlockAction(Request $request, SessionInterface $session)
     {
