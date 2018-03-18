@@ -244,4 +244,15 @@ class Room
     {
         return empty($this->nextRoom);
     }
+
+    /**
+     * @return Activity|null
+     */
+    public function getLastActivity() {
+        if ($this->getActivities()) {
+            return $this->getActivities()->last();
+        }
+
+        return null;
+    }
 }

@@ -34,7 +34,10 @@
                 data: data,
                 method: 'POST'
             })
-                .done(response => $("#main-div").html(response))
+                .done(function(response) {
+                    $("#main-div").html(response);
+                    VideoPlayer.init();
+                })
                 .fail(response => console.error(response));
         },
 
