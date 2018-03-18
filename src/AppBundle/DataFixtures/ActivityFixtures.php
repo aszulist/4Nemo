@@ -11,6 +11,8 @@ use Doctrine\ORM\EntityManagerInterface;
 
 class ActivityFixtures extends Fixture implements DependentFixtureInterface
 {
+    private static $counter = 1;
+
     /**
      * @var EntityManagerInterface
      */
@@ -68,6 +70,7 @@ class ActivityFixtures extends Fixture implements DependentFixtureInterface
         $activity->setName("Name " . $room->getId() . '_' . $iterator);
         $activity->setDescription("Description " . $room->getId() . '_' . $iterator);
         $activity->setMapImagePath('img/activity_' . $room->getId() . '_' . $iterator . '.jpg');
+        $activity->setUnlockedPuzzle(ActivityFixtures::$counter);
 
         if (!empty($previousActivity)) {
             $activity->setPreviousActivity($previousActivity);
@@ -76,6 +79,7 @@ class ActivityFixtures extends Fixture implements DependentFixtureInterface
         $this->em->persist($activity);
         $this->em->flush();
         $this->em->refresh($activity);
+        ActivityFixtures::$counter++;
 
         return $activity;
     }

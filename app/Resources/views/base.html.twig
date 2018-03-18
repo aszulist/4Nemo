@@ -36,6 +36,16 @@
             })
                 .done(response => $("#main-div").html(response))
                 .fail(response => console.error(response));
+        },
+
+        unlockAndNavigate: function(key, url, data) {
+            $.ajax({
+                url: '{{ path('puzzle') }}',
+                data: {unlocked_key: key},
+                method: 'POST'
+            });
+
+            this.navigate(url, data);
         }
     }
 </script>

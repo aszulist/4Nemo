@@ -8,7 +8,7 @@
         UGABUGA KURWA KONIEC
     {% elseif activity.isLastActivity %}
         <button type="button" class="col-md-6 btn btn-dark w-50 btn-lg btn-ph-20"
-                onclick="reload.navigate('{{ path('room_index', {id: activity.room.nextRoom.id}) }}')">
+                onclick="reload.unlockAndNavigate({{ activity.unlockedPuzzle }}, '{{ path('room_index', {id: activity.room.nextRoom.id}) }}')">
             Next room
         </button>
     {% endif %}
@@ -22,7 +22,7 @@
     {% endif %}
     {% if not activity.isLastActivity and activity.nextActivity is not empty %}
         <button type="button" class="col-md-6 btn btn-navy w-50 btn-lg btn-ph-20"
-                onclick="reload.navigate('{{ path('activity_index', {id: activity.nextActivity.id}) }}')">
+                onclick="reload.unlockAndNavigate({{ activity.unlockedPuzzle }}, '{{ path('activity_index', {id: activity.nextActivity.id}) }}')">
             Następny
         </button>
     {% endif %}

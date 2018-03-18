@@ -29,6 +29,13 @@ class Activity
     private $name;
 
     /**
+     * @var int
+     *
+     * @ORM\Column(name="unlocked_puzzle", type="integer")
+     */
+    private $unlockedPuzzle;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="description", type="text", nullable=true)
@@ -224,14 +231,32 @@ class Activity
     /**
      * @return bool
      */
-    public function isFirstActivity() {
+    public function isFirstActivity()
+    {
         return empty($this->previousActivity);
     }
 
     /**
      * @return bool
      */
-    public function isLastActivity() {
+    public function isLastActivity()
+    {
         return empty($this->nextActivity);
+    }
+
+    /**
+     * @return int
+     */
+    public function getUnlockedPuzzle()
+    {
+        return $this->unlockedPuzzle;
+    }
+
+    /**
+     * @param int $unlockedPuzzle
+     */
+    public function setUnlockedPuzzle($unlockedPuzzle)
+    {
+        $this->unlockedPuzzle = $unlockedPuzzle;
     }
 }
