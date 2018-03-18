@@ -16,10 +16,10 @@
             Poprzedni
         </button>
     {% endif %}
-    {% if not room.isLastRoom and room.nextRoom is not empty %}
-        <button type="button" class="col-md-6 btn btn-navy w-50 btn-lg btn-ph-20"
-                onclick="reload.navigate('{{ path('room_index', {id: room.nextRoom.id}) }}')">
-            Następny
-        </button>
-    {% endif %}
+    {#{% if not room.isLastRoom and room.nextRoom is not empty %}#}
+        {#<button type="button" class="col-md-6 btn btn-navy w-50 btn-lg btn-ph-20"#}
+                {#onclick="reload.navigate('{{ path('room_index', {id: room.nextRoom.id}) }}')">#}
+            {#Następny#}
+        {#</button>#}
+    {#{% endif %}#}
 </div>
