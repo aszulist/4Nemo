@@ -38,13 +38,6 @@ class Room
     private $description;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="sort_by", type="integer")
-     */
-    private $sortBy;
-
-    /**
      * @var string
      *
      * @ORM\Column(name="map_image_path", type="string", length=255, nullable=true)
@@ -55,6 +48,18 @@ class Room
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Activity", mappedBy="room")
      */
     private $activities;
+
+    /**
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Room", inversedBy="nextRoom")
+     * @ORM\JoinColumn(name="previous_room_id", referencedColumnName="id")
+     *
+     */
+    private $previousRoom;
+
+    /**
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Room", mappedBy="previousRoom")
+     */
+    private $nextRoom;
 
     /**
      * Get id
@@ -112,30 +117,6 @@ class Room
     public function getDescription()
     {
         return $this->description;
-    }
-
-    /**
-     * Set sortBy
-     *
-     * @param integer $sortBy
-     *
-     * @return Room
-     */
-    public function setSortBy($sortBy)
-    {
-        $this->sortBy = $sortBy;
-
-        return $this;
-    }
-
-    /**
-     * Get sortBy
-     *
-     * @return int
-     */
-    public function getSortBy()
-    {
-        return $this->sortBy;
     }
 
     /**
@@ -201,5 +182,51 @@ class Room
     public function getActivities()
     {
         return $this->activities;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPreviousRoom()
+    {
+        return $this->previousRoom;
+    }
+
+    /**
+     * @param mixed $previousRoom
+     */
+    public function setPreviousRoom($previousRoom)
+    {
+        $this->previousRoom = $previousRoom;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNextRoom()
+    {
+        return $this->nextRoom;
+    }
+
+    /**
+     * @param mixed $nextRoom
+     */
+    public function setNextRoom($nextRoom)
+    {
+        $this->nextRoom = $nextRoom;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isFirstRoom() {
+        return empty($this->previousRoom);
+    }
+
+    /**
+     * @return bool
+     */
+    public function isLastRoom() {
+        return empty($this->nextRoom);
     }
 }

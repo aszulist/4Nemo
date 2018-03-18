@@ -43,13 +43,6 @@ class Activity
     private $mapImagePath;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="sort_by", type="integer")
-     */
-    private $sortBy;
-
-    /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Room", inversedBy="activities")
      * @ORM\JoinColumn(name="room_id", referencedColumnName="id")
      */
@@ -61,6 +54,18 @@ class Activity
      * @ORM\Column(name="video_path", type="string", length=255, nullable=true)
      */
     private $videoPath;
+
+    /**
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Activity", inversedBy="nextActivity")
+     * @ORM\JoinColumn(name="previous_activity_id", referencedColumnName="id")
+     *
+     */
+    private $previousActivity;
+
+    /**
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Activity", mappedBy="previousActivity")
+     */
+    private $nextActivity;
 
     /**
      * Get id
@@ -145,30 +150,6 @@ class Activity
     }
 
     /**
-     * Set sortBy
-     *
-     * @param integer $sortBy
-     *
-     * @return Activity
-     */
-    public function setSortBy($sortBy)
-    {
-        $this->sortBy = $sortBy;
-
-        return $this;
-    }
-
-    /**
-     * Get sortBy
-     *
-     * @return int
-     */
-    public function getSortBy()
-    {
-        return $this->sortBy;
-    }
-
-    /**
      * Set room
      *
      * @param Room $room
@@ -206,5 +187,51 @@ class Activity
     public function setVideoPath($videoPath)
     {
         $this->videoPath = $videoPath;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPreviousActivity()
+    {
+        return $this->previousActivity;
+    }
+
+    /**
+     * @param mixed $previousActivity
+     */
+    public function setPreviousActivity($previousActivity): void
+    {
+        $this->previousActivity = $previousActivity;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNextActivity()
+    {
+        return $this->nextActivity;
+    }
+
+    /**
+     * @param mixed $nextActivity
+     */
+    public function setNextActivity($nextActivity): void
+    {
+        $this->nextActivity = $nextActivity;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isFirstActivity() {
+        return empty($this->previousActivity);
+    }
+
+    /**
+     * @return bool
+     */
+    public function isLastActivity() {
+        return empty($this->nextActivity);
     }
 }
