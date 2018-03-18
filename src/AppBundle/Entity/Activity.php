@@ -200,7 +200,7 @@ class Activity
     /**
      * @param mixed $previousActivity
      */
-    public function setPreviousActivity($previousActivity): void
+    public function setPreviousActivity($previousActivity)
     {
         $this->previousActivity = $previousActivity;
     }
@@ -216,7 +216,7 @@ class Activity
     /**
      * @param mixed $nextActivity
      */
-    public function setNextActivity($nextActivity): void
+    public function setNextActivity($nextActivity)
     {
         $this->nextActivity = $nextActivity;
     }
