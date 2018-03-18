@@ -1,7 +1,7 @@
 <div class="row" style="background-color: #eee;">
     <div class="col-md-12 p-0">
         {% if activity.isLastActivity and activity.videoPath is not empty %}
-            <video id="doomVideo" autoplay="autoplay" onended="reload.navigate('{{ path('room_index', {id: activity.room.nextRoom.id}) }}')">
+            <video id="doomVideo" autoplay="autoplay" onended="reload.navigate('{{ path('room_index', {id: activity.room.nextRoom.id}) }}')" width="100%">
                 <source src="{{ asset(activity.videoPath) }}" type="video/mp4">
                 Your browser does not support HTML5 video.
             </video>
