@@ -1,17 +1,15 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div class="container">
-        <div class="mw-100 m-0" style="background-color: #eee;">
-            <img src="{{ asset('img/AKWARIUM_LOGO_kolor_kontra_pl.png') }}" alt="-" class="w-100 p-0 m-0">
-            <div>
-                <p class="font-weight-normal text-center display-1 bg-primary text-white m-0"> ZOSTERA MARINA</p>
-            </div>
-            <img src="{{ asset('img/ekspozycje007.jpg') }}" alt="-" class="mw-100">
-            <div class="text-center">
-                <button type="button" class="btn btn-dark btn-lg">WEJDŹ</button>
-                <button type="button" class="btn btn-dark btn-lg">MAPA</button>
-            </div>
+    <div class="mw-100 m-0" style="background-color: #eee;">
+        <img src="{{ asset('img/AKWARIUM_LOGO_kolor_kontra_pl.png') }}" alt="-" class="w-100 p-0 m-0">
+        <div>
+            <p class="font-weight-normal text-center display-1 bg-primary text-white m-0"> ZOSTERA MARINA</p>
+        </div>
+        <img src="{{ asset('img/ekspozycje007.jpg') }}" alt="-" class="mw-100">
+        <div class="text-center">
+            <button type="button" class="btn btn-dark btn-lg">WEJDŹ</button>
+            <button type="button" class="btn btn-dark btn-lg">MAPA</button>
         </div>
     </div>
 {% endblock %}
