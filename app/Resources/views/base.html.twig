@@ -12,12 +12,64 @@
         {% endstylesheets %}
     {% endblock %}
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+    <style type="text/css">
+        .btn-ph-20 {
+            padding: 20px 0;
+        }
+
+        .btn-navy {
+            background-color: rgb(17, 61, 184);
+            color: rgb(255, 255, 255);
+        }
+
+        .btn-orang {
+            background-color: rgba(243, 95, 9, 0.945);
+            color: rgb(255, 255, 255);
+        }
+
+        .btn-navy {
+            background-color: rgb(17, 61, 184);
+            color: rgb(255, 255, 255);
+        }
+
+        .btn-ph-100 {
+            padding: 100px 0;
+        }
+
+        .help-body-backgroud {
+            background-color: rgb(33, 17, 126);
+            color: rgb(255, 255, 255);
+        }
+
+        .help-content-font {
+            font-size: 2rem;
+        }
+
+        @include media-breakoint-up(sm) {
+            .help-content-font {
+                font-size: 3rem;
+            }
+        }
+
+        @include media-breakpoint-up(md) {
+            .help-content-font {
+                font-size: 4rem;
+            }
+        }
+
+        @include media-breakpoint-up(lg) {
+            .help-content-font {
+                font-size: 5rem;
+            }
+        }
+    </style>
+
 </head>
 <body>
 <div class="container" id="main-div">
     {% block body %}{% endblock %}
 </div>
-<a href="#" class="btn btn-primary" onclick="reload.navigate('{{ path('room_index') }}')">KLIK</a>
+<a href="#" class="btn btn-primary" onclick="reload.navigate('{{ path('room_index', {id: 1}) }}')">KLIK</a>
 {% block javascripts %}
     {% javascripts
         '../node_modules/jquery/dist/jquery.min.js'

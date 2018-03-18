@@ -142,6 +142,7 @@ class Room
     {
         return $this->mapImagePath;
     }
+
     /**
      * Constructor
      */
@@ -164,12 +165,24 @@ class Room
         return $this;
     }
 
+    public function getFirstActivity()
+    {
+        $first = null;
+        /** @var Activity $activity */
+        foreach ($this->activities as $activity) {
+            if ($activity->isFirstActivity()) {
+                return $activity;
+            }
+        }
+        return null;
+    }
+
     /**
      * Remove activity
      *
      * @param Activity $activity
      */
-    public function removeActivity( $activity)
+    public function removeActivity($activity)
     {
         $this->activities->removeElement($activity);
     }
@@ -219,14 +232,16 @@ class Room
     /**
      * @return bool
      */
-    public function isFirstRoom() {
+    public function isFirstRoom()
+    {
         return empty($this->previousRoom);
     }
 
     /**
      * @return bool
      */
-    public function isLastRoom() {
+    public function isLastRoom()
+    {
         return empty($this->nextRoom);
     }
 }

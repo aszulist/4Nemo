@@ -67,7 +67,7 @@ class ActivityFixtures extends Fixture implements DependentFixtureInterface
         $activity->setRoom($room);
         $activity->setName("Name " . $room->getId() . '_' . $iterator);
         $activity->setDescription("Description " . $room->getId() . '_' . $iterator);
-        $activity->setMapImagePath('web/img/activity_' . $room->getId() . '_' . $iterator . '.jpg');
+        $activity->setMapImagePath('img/activity_' . $room->getId() . '_' . $iterator . '.jpg');
 
         if (!empty($previousActivity)) {
             $activity->setPreviousActivity($previousActivity);

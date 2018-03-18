@@ -48,7 +48,7 @@ class RoomFixtures extends Fixture
         $room = new Room();
         $room->setName('Name ' . $iterator);
         $room->setDescription('Description ' . $iterator);
-        $room->setMapImagePath('web/img/room_' . $iterator . '.jpg');
+        $room->setMapImagePath('img/room_' . $iterator . '.jpg');
 
         if (!empty($previousRoom)) {
             $room->setPreviousRoom($previousRoom);

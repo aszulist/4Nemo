@@ -1,1 +1,25 @@
-wypierdalaj
+<div class="row" style="background-color: #eee;">
+    <div class="col-md-12 p-0">
+        <img src="{{ asset(room.mapImagePath) }}" alt="-" width="100%"/>
+    </div>
+</div>
+<div class="row">
+    <button type="button" class="col-md-12 text-center btn btn-orang btn-lg w-100 btn-ph-20"
+            onclick="reload.navigate('{{ path('activity_index', {id: room.firstActivity.id}) }}')">
+        Next
+    </button>
+</div>
+<div class="row">
+    {% if not room.isFirstRoom and room.previousRoom is not empty %}
+        <button type="button" class="col-md-6 btn btn-dark w-50 btn-lg btn-ph-20"
+                onclick="reload.navigate('{{ path('room_index', {id: room.previousRoom.id}) }}')">
+            Poprzedni
+        </button>
+    {% endif %}
+    {% if not room.isLastRoom and room.nextRoom is not empty %}
+        <button type="button" class="col-md-6 btn btn-navy w-50 btn-lg btn-ph-20"
+                onclick="reload.navigate('{{ path('room_index', {id: room.nextRoom.id}) }}')">
+            Następny
+        </button>
+    {% endif %}
+</div>

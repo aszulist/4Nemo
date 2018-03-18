@@ -1,0 +1,29 @@
+<div class="row" style="background-color: #eee;">
+    <div class="col-md-12 p-0">
+        <img src="{{ asset(activity.mapImagePath) }}" alt="-" width="100%"/>
+    </div>
+</div>
+<div class="row">
+    {% if activity.isLastActivity and activity.room.isLastRoom %}
+        UGABUGA KURWA KONIEC
+    {% elseif activity.isLastActivity %}
+        <button type="button" class="col-md-6 btn btn-dark w-50 btn-lg btn-ph-20"
+                onclick="reload.navigate('{{ path('room_index', {id: activity.room.nextRoom.id}) }}')">
+            Next room bitch:w
+        </button>
+    {% endif %}
+</div>
+<div class="row">
+    {% if not activity.isFirstActivity and activity.previousActivity is not empty %}
+        <button type="button" class="col-md-6 btn btn-dark w-50 btn-lg btn-ph-20"
+                onclick="reload.navigate('{{ path('activity_index', {id: activity.previousActivity.id}) }}')">
+            Poprzedni
+        </button>
+    {% endif %}
+    {% if not activity.isLastActivity and activity.nextActivity is not empty %}
+        <button type="button" class="col-md-6 btn btn-navy w-50 btn-lg btn-ph-20"
+                onclick="reload.navigate('{{ path('activity_index', {id: activity.nextActivity.id}) }}')">
+            Następny
+        </button>
+    {% endif %}
+</div>

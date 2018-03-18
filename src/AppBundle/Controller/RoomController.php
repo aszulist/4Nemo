@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Room;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -12,10 +13,10 @@ use Symfony\Component\HttpFoundation\Request;
 class RoomController extends Controller
 {
     /**
-     * @Route("/", name="room_index")
+     * @Route("/{id}", name="room_index")
      */
-    public function indexAction(Request $request)
+    public function indexAction(Request $request, Room $room = null)
     {
-        return $this->render('room/index.html.twig');
+        return $this->render('room/index.html.twig', ['room', $room]);
     }
 }
