@@ -31,7 +31,7 @@ class Activity
     /**
      * @var int
      *
-     * @ORM\Column(name="unlocked_puzzle", type="integer")
+     * @ORM\Column(name="unlocked_puzzle", type="integer", nullable=true)
      */
     private $unlockedPuzzle;
 
