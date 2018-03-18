@@ -44,12 +44,16 @@ class ActivityFixtures extends Fixture implements DependentFixtureInterface
     public function load(ObjectManager $manager) {
         $rooms = $this->em->getRepository(Room::class)->findAll();
 
-        $activitiesPerRoom = 3;
+        $activitiesPerRoom = 4;
         foreach ($rooms as $room) {
 
             $previousActivity = null;
             for ($iterator = 1; $iterator <= $activitiesPerRoom; $iterator++) {
-                $previousActivity = $this->createActivity($room, $iterator, $previousActivity);
+                if ($iterator == $activitiesPerRoom && !empty($room->getNextRoom())) {
+                    $this->createVideoActivity($room, $iterator, $previousActivity);
+                } else {
+                    $previousActivity = $this->createActivity($room, $iterator, $previousActivity);
+                }
             }
         }
     }
@@ -68,6 +72,31 @@ class ActivityFixtures extends Fixture implements DependentFixtureInterface
         $activity->setName("Name " . $room->getId() . '_' . $iterator);
         $activity->setDescription("Description " . $room->getId() . '_' . $iterator);
         $activity->setMapImagePath('img/activity_' . $room->getId() . '_' . $iterator . '.jpg');
+
+        if (!empty($previousActivity)) {
+            $activity->setPreviousActivity($previousActivity);
+        }
+
+        $this->em->persist($activity);
+        $this->em->flush();
+        $this->em->refresh($activity);
+
+        return $activity;
+    }
+
+    /**
+     * @param Room $room
+     * @param int $iterator
+     * @param Activity|null $previousActivity
+     *
+     * @return Activity
+     */
+    private function createVideoActivity(Room $room, int $iterator, Activity $previousActivity = null) {
+        $activity = new Activity();
+        $activity->setRoom($room);
+        $activity->setName("Name " . $room->getId() . '_' . $iterator);
+        $activity->setDescription("Description " . $room->getId() . '_' . $iterator);
+        $activity->setVideoPath('video/doom_' . $room->getId() . '.mp4');
 
         if (!empty($previousActivity)) {
             $activity->setPreviousActivity($previousActivity);

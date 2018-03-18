@@ -10,9 +10,9 @@
     </button>
 </div>
 <div class="row">
-    {% if not room.isFirstRoom and room.previousRoom is not empty %}
-        <button type="button" class="col-md-6 btn btn-dark w-50 btn-lg btn-ph-20"
-                onclick="reload.navigate('{{ path('room_index', {id: room.previousRoom.id}) }}')">
+    {% if not room.isFirstRoom and room.previousRoom.activities is not empty %}
+        <button type="button" class="col-md-12 btn btn-dark w-50 btn-lg btn-ph-20"
+                onclick="reload.navigate('{{ path('activity_index', {id: room.previousRoom.lastActivity.id}) }}')">
             Poprzedni
         </button>
     {% endif %}

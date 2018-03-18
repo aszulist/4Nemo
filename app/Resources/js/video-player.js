@@ -5,23 +5,22 @@ var VideoPlayer = {
 
     init: function () {
         this.videoTag = $("#doomVideo");
-        this.afterVideoRedirectPath = $("#afterVideoPath");
 
         if (this.videoTag.length) {
             this.clickListener();
         }
 
-        if (this.afterVideoRedirectPath.length) {
-            this.endListener();
-        }
+        // if (this.afterVideoRedirectPath.length) {
+        //     this.endListener();
+        // }
     },
 
-    endListener: function () {
-        var $this = this;
-        $this.videoTag.on('ended', function() {
-            window.location.href = $this.afterVideoRedirectPath.attr('href');
-        })
-    },
+    // endListener: function () {
+    //     var $this = this;
+    //     $this.videoTag.on('ended', function() {
+    //         window.location.href = $this.afterVideoRedirectPath.attr('href');
+    //     })
+    // },
 
     clickListener: function () {
         this.videoTag.on('click', function () {
